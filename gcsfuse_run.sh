@@ -34,6 +34,8 @@ echo "Mounting completed."
 # wait -n
 # [END cloudrun_fuse_script]
 
-exec /usr/local/tomcat/bin/catalina.sh run &
-    # Exit immediately when one of the background processes terminate.
-    wait -n
+# exec /usr/local/tomcat/bin/catalina.sh run &
+#     # Exit immediately when one of the background processes terminate.
+#     wait -n
+
+/bin/bash /scripts/entrypoint.sh
