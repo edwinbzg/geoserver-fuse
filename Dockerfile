@@ -79,9 +79,17 @@ RUN set -e; \
 ENV MNT_DIR /mnt/gcs
 
 # Copy local code to the container image.
-ENV APP_HOME /app
-WORKDIR $APP_HOME
-COPY . ./
+# ENV APP_HOME /app
+# WORKDIR $APP_HOME
+# COPY . ./
+
+# Workdir 
+WORKDIR /scripts
+RUN groupadd -r ${GROUP_NAME} -g ${GEOSERVER_GID} && \
+    useradd -m -d /home/${USER}/ -u ${GEOSERVER_UID} --gid ${GEOSERVER_GID} -s /bin/bash -G ${GROUP_NAME} ${USER}
+RUN mkdir -p  ${GEOSERVER_DATA_DIR} ${CERT_DIR} ${FOOTPRINTS_DATA_DIR} ${FONTS_DIR} \
+             ${GEOWEBCACHE_CACHE_DIR} ${GEOSERVER_HOME} ${EXTRA_CONFIG_DIR} /community_plugins /stable_plugins \
+           /plugins /geo_data
 
 # Install production dependencies.
 # RUN pip install -r requirements.txt
