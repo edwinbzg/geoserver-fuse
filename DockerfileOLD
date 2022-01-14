@@ -66,7 +66,7 @@ RUN chmod +x /scripts/*.sh;/scripts/setup.sh \
 EXPOSE  $HTTPS_PORT
 
 
-USER ${GEOSERVER_UID}
+# USER ${GEOSERVER_UID}
 RUN echo 'figlet -t "Kartoza Docker GeoServer"' >> ~/.bashrc
 
 WORKDIR ${GEOSERVER_HOME}
