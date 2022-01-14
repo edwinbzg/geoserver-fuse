@@ -83,6 +83,9 @@ ENV APP_HOME /app
 WORKDIR $APP_HOME
 COPY . ./
 
+# Ensure the script is executable
+RUN chmod +x /app/gcsfuse_run.sh
+
 # Workdir 
 WORKDIR /scripts
 RUN groupadd -r ${GROUP_NAME} -g ${GEOSERVER_GID} && \
@@ -120,8 +123,7 @@ RUN echo 'figlet -t "Kartoza Docker GeoServer"' >> ~/.bashrc
 WORKDIR ${GEOSERVER_HOME}
 
 
-# Ensure the script is executable
-RUN chmod +x /app/gcsfuse_run.sh
+
 
 # Use tini to manage zombie processes and signal forwarding
 # https://github.com/krallin/tini
