@@ -110,6 +110,16 @@ RUN chmod +x /scripts/*.sh;/scripts/setup.sh \
 # Install production dependencies.
 # RUN pip install -r requirements.txt
 
+
+EXPOSE  $HTTPS_PORT
+
+
+USER ${GEOSERVER_UID}
+RUN echo 'figlet -t "Kartoza Docker GeoServer"' >> ~/.bashrc
+
+WORKDIR ${GEOSERVER_HOME}
+
+
 # Ensure the script is executable
 RUN chmod +x /app/gcsfuse_run.sh
 
