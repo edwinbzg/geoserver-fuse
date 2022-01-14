@@ -91,6 +91,22 @@ RUN mkdir -p  ${GEOSERVER_DATA_DIR} ${CERT_DIR} ${FOOTPRINTS_DATA_DIR} ${FONTS_D
              ${GEOWEBCACHE_CACHE_DIR} ${GEOSERVER_HOME} ${EXTRA_CONFIG_DIR} /community_plugins /stable_plugins \
            /plugins /geo_data
 
+# Resources
+ADD resources /tmp/resources
+ADD build_data /build_data
+RUN cp /build_data/stable_plugins.txt /plugins && cp /build_data/community_plugins.txt /community_plugins && \
+    cp /build_data/letsencrypt-tomcat.xsl ${CATALINA_HOME}/conf/ssl-tomcat.xsl
+
+
+# Scripts
+ADD scripts /scripts
+RUN echo $GS_VERSION > /scripts/geoserver_version.txt
+RUN chmod +x /scripts/*.sh;/scripts/setup.sh \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*;chown -R ${USER}:${GROUP_NAME} \
+    ${CATALINA_HOME} ${FOOTPRINTS_DATA_DIR} ${GEOSERVER_DATA_DIR} /scripts ${CERT_DIR} ${FONTS_DIR} \
+    /tmp/ /home/${USER}/ /community_plugins/ /plugins ${GEOSERVER_HOME} ${EXTRA_CONFIG_DIR} \
+    /usr/share/fonts/ /geo_data;chmod o+rw ${CERT_DIR}
+
 # Install production dependencies.
 # RUN pip install -r requirements.txt
 
