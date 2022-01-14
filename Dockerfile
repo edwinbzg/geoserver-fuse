@@ -17,7 +17,22 @@
 # https://hub.docker.com/_/python
 ARG IMAGE_VERSION=9.0-jdk11-openjdk-slim-buster
 ARG JAVA_HOME=/usr/local/openjdk-11
+
 FROM tomcat:$IMAGE_VERSION
+
+# Argumentos docker-geoserver
+LABEL maintainer="Tim Sutton<tim@linfiniti.com>"
+ARG GS_VERSION=2.20.1
+ARG WAR_URL=https://downloads.sourceforge.net/project/geoserver/GeoServer/${GS_VERSION}/geoserver-${GS_VERSION}-war.zip
+ARG STABLE_PLUGIN_BASE_URL=https://liquidtelecom.dl.sourceforge.net
+ARG DOWNLOAD_ALL_STABLE_EXTENSIONS=1
+ARG DOWNLOAD_ALL_COMMUNITY_EXTENSIONS=1
+ARG GEOSERVER_UID=1000
+ARG GEOSERVER_GID=10001
+ARG USER=geoserveruser
+ARG GROUP_NAME=geoserverusers
+ARG HTTPS_PORT=8443
+
 
 # Install system dependencies
 RUN set -e; \
