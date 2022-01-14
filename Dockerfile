@@ -79,9 +79,9 @@ RUN set -e; \
 ENV MNT_DIR /mnt/gcs
 
 # Copy local code to the container image.
-# ENV APP_HOME /app
-# WORKDIR $APP_HOME
-# COPY . ./
+ENV APP_HOME /app
+WORKDIR $APP_HOME
+COPY . ./
 
 # Workdir 
 WORKDIR /scripts
