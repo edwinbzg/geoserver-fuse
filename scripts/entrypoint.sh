@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-
+echo "Entrypoint running";
 
 figlet -t "Kartoza Docker GeoServer"
 
