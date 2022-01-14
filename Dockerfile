@@ -127,7 +127,7 @@ WORKDIR ${GEOSERVER_HOME}
 
 # Use tini to manage zombie processes and signal forwarding
 # https://github.com/krallin/tini
-# ENTRYPOINT ["/usr/bin/tini", "--"] 
+ENTRYPOINT ["/usr/bin/tini", "--"] 
 
 # Pass the startup script as arguments to Tini
 CMD ["/app/gcsfuse_run.sh"]
