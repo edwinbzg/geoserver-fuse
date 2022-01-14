@@ -17,10 +17,10 @@
 set -eo pipefail
 
 # Create mount directory for service
-mkdir -p $MNT_DIR
+# mkdir -p $MNT_DIR
 
 echo "Mounting GCS Fuse."
-gcsfuse --debug_gcs --debug_fuse $BUCKET $MNT_DIR 
+gcsfuse --debug_gcs --debug_fuse $BUCKET $GEOSERVER_HOME 
 echo "Mounting completed."
 
 # Run the web service on container startup. Here we use the gunicorn
@@ -34,8 +34,6 @@ echo "Mounting completed."
 # wait -n
 # [END cloudrun_fuse_script]
 
-# exec /usr/local/tomcat/bin/catalina.sh run &
-#     # Exit immediately when one of the background processes terminate.
-#     wait -n
-
-/bin/bash /scripts/entrypoint.sh
+exec /usr/local/tomcat/bin/catalina.sh run &
+    # Exit immediately when one of the background processes terminate.
+    wait -n
