@@ -83,8 +83,6 @@ ENV APP_HOME /app
 WORKDIR $APP_HOME
 COPY . ./
 
-COPY Hello.war /usr/local/tomcat/webapps
-
 # Install production dependencies.
 # RUN pip install -r requirements.txt
 
