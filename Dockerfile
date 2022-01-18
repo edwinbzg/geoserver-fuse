@@ -73,7 +73,8 @@ RUN set -e; \
     apt-key add -; \
     apt-get update; \
     apt-get install -y gcsfuse \
-    && apt-get clean
+    && apt-get clean; \
+    update-locale
 
 # Set fallback mount directory
 ENV MNT_DIR /mnt/gcs
