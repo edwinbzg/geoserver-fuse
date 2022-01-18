@@ -20,7 +20,7 @@ set -eo pipefail
 # mkdir -p $MNT_DIR
 
 echo "Mounting GCS Fuse."
-gcsfuse --debug_gcs --debug_fuse $BUCKET $GEOSERVER_HOME 
+gcsfuse --debug_gcs --debug_fuse $BUCKET /opt/geoserver/ 
 echo "Mounting completed."
 
 # Run the web service on container startup. Here we use the gunicorn
