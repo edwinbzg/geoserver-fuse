@@ -23,7 +23,6 @@ echo "Mounting GCS Fuse."
 gcsfuse --debug_gcs --debug_fuse $BUCKET /opt/geoserver/ 
 echo "Mounting completed."
 
-setfacl -m u:$USER:rwx /opt/geoserver
 # Run the web service on container startup. Here we use the gunicorn
 # webserver, with one worker process and 8 threads.
 # For environments with multiple CPU cores, increase the number of workers
@@ -35,9 +34,7 @@ setfacl -m u:$USER:rwx /opt/geoserver
 # wait -n
 
 
-# su $USER --command "/scripts/entrypoint.sh"
-su $USER
-/bin/bash /scripts/entrypoint.sh
+su $USER --command "/scripts/entrypoint.sh"
 
 # exec /usr/local/tomcat/bin/catalina.sh run &
 #     # Exit immediately when one of the background processes terminate.
