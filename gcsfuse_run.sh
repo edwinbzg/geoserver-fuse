@@ -14,7 +14,7 @@
 # limitations under the License.
 # [START cloudrun_fuse_script]
 #!/usr/bin/env bash
-# set -eo pipefail
+set -eo pipefail
 
 # Create mount directory for service
 # mkdir -p $MNT_DIR
