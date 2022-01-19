@@ -36,7 +36,7 @@ echo "Mounting completed."
 
 # su $USER --command "/scripts/entrypoint.sh"
 su $USER
-/scripts/entrypoint.sh
+/bin/bash /scripts/entrypoint.sh
 
 # exec /usr/local/tomcat/bin/catalina.sh run &
 #     # Exit immediately when one of the background processes terminate.
