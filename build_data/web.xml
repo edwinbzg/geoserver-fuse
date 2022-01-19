@@ -20,7 +20,10 @@
   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
   version="3.1">
-
+    <context-param>
+        <param-name>GEOSERVER_REQUIRE_FILE</param-name>
+        <param-value>/opt/geoserver/data_dir/global.xml</param-value>
+    </context-param>
   <!-- ======================== Introduction ============================== -->
   <!-- This document defines default values for *all* web applications      -->
   <!-- loaded into this instance of Tomcat.  As each application is         -->
@@ -4718,5 +4721,6 @@
         <welcome-file>index.htm</welcome-file>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+
 
 </web-app>
